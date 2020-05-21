@@ -3,19 +3,32 @@ package mensajeJsf.beans;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import entities.Usuario;
+
 @ManagedBean
 @SessionScoped
-
-
 public class MensajeBean {
-	private String nombre;
+	private Usuario  usuario;;
 
-	public String getNombre() {
-		this.nombre="Juan";
-		return nombre;
+	public MensajeBean() {
+		this.usuario=new Usuario();
+		this.usuario.setNombre("Juan");
+	}
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
+
+	public String guardar() {
+		System.out.print(usuario.getEmail()+usuario.getNombre()+usuario.getClave()+usuario.getUsuario());
+		if(usuario.getEmail().contentEquals("juanpablo@gmail.com"))
+		return "home";
+		else
+			return "error";
+	}
+	
 }

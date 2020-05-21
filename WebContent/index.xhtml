@@ -9,7 +9,17 @@
 
 </h:head>
 <h:body>
-Primera pagina JSF #{mensajeBean.nombre}
+Primera pagina JSF  #{mensajeBean.usuario.nombre}
 </h:body>
-
+<h:form>
+<h:outputLabel value="Nombre" for="nombreTxt"/>
+<h:inputText id="nombreTxt" value="#{mensajeBean.usuario.nombre}"></h:inputText>
+<h:outputLabel value="Email" for="emailTxt"/>
+<h:inputText id="emailTxt" value="#{mensajeBean.usuario.email}" ></h:inputText>
+<h:outputLabel value="Clave" for="claveTxt"/>
+<h:inputText id="claveTxt" value="#{mensajeBean.usuario.clave}" ></h:inputText>
+<h:outputLabel value="Usuario" for="usuarioTxt"/>
+<h:inputText id="usuarioTxt" value="#{mensajeBean.usuario.usuario}" ></h:inputText>
+<h:commandButton action="#{mensajeBean.guardar}" value="Guardar" />
+</h:form>
 </html>
