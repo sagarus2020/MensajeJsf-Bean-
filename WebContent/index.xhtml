@@ -4,22 +4,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" 
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-
+	<style type="text/css">
+.form-signin {
+	margin: 0 auto;
+	max-width: 330px;
+	padding: 15px;
+}
+</style>
 </h:head>
 <h:body>
-Primera pagina JSF  #{mensajeBean.usuario.nombre}
+
+<b:container>
+		<h:form styleClass="form-signin" prependId="false">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<b:inputText id="email" placeholder="User" value="#{loginBean.usuario.nombre}">
+				<f:facet name="prepend">
+					<b:icon name="user" />
+				</f:facet>
+			</b:inputText>
+			<b:inputText id="password" placeholder="Password" type="password" value="#{loginBean.usuario.clave}">
+				<f:facet name="prepend">
+					<b:iconAwesome name="key" />
+				</f:facet>
+			</b:inputText>
+			<b:selectBooleanCheckbox value="true" caption="remember me" />
+			<b:commandButton look="primary btn-block" value="Sign In" action="#{loginBean.login}"
+				icon="log-in" size="lg" />
+		</h:form>
+	</b:container>
+	
 </h:body>
-<h:form>
-<h:outputLabel value="Nombre" for="nombreTxt"/>
-<h:inputText id="nombreTxt" value="#{mensajeBean.usuario.nombre}"></h:inputText>
-<h:outputLabel value="Email" for="emailTxt"/>
-<h:inputText id="emailTxt" value="#{mensajeBean.usuario.email}" ></h:inputText>
-<h:outputLabel value="Clave" for="claveTxt"/>
-<h:inputText id="claveTxt" value="#{mensajeBean.usuario.clave}" ></h:inputText>
-<h:outputLabel value="Usuario" for="usuarioTxt"/>
-<h:inputText id="usuarioTxt" value="#{mensajeBean.usuario.usuario}" ></h:inputText>
-<h:commandButton action="#{mensajeBean.guardar}" value="Guardar" />
-</h:form>
 </html>
